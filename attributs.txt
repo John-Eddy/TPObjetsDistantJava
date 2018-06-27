@@ -1,0 +1,11 @@
+			attribute int id;
+			attribute string nom;
+			attribute string prenom;
+			int boolean isComptable; 
+			attribute Collection <Frais> listeFrais;
+
+			attribute int id;
+			attribute int idUtilisateur
+			attribute float montant;
+			attribute Date date;
+			attribute string statut;

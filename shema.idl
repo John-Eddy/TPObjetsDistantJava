@@ -1,0 +1,13 @@
+module AppliFrais { 
+		interface Frais{
+			void setStatut(in string statut);
+			void view();
+		};
+		interface Utilisateur{
+			void addFrais(in Frais frais);
+			Frais getFrais(in long id);
+			void deleteFrais(in long id);
+			boolean isComptable();
+			float getMontantTotal();
+		};
+};
