@@ -7,10 +7,16 @@ import java.rmi.*;
 
 public interface Utilisateur extends Remote {
 	void addFrais(Frais frais) throws RemoteException;
-	Frais getFrais(int id) throws RemoteException;
-	ArrayList<Frais> getAllFrais() throws RemoteException;
-	void deleteFrais(int id) throws RemoteException;
-	boolean isComptable() throws RemoteException;
+	FraisImpl getFrais(int index) throws RemoteException;
+	void deleteFrais(int index) throws RemoteException;
 	float getMontantTotal() throws RemoteException;
+	
+	public String getNom() throws RemoteException;
+	public void setNom(String nom) throws RemoteException;
+	public String getPrenom() throws RemoteException;
+	public void setPrenom(String prenom) throws RemoteException;
+	public ArrayList<FraisImpl> getListeFraisImpl() throws RemoteException;
+	public void setListeFraisImpl( ArrayList<FraisImpl>  listeFraisImpl) throws RemoteException;
+	public String getAffichage() throws RemoteException;
 
 }

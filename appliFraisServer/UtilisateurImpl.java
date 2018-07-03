@@ -8,51 +8,78 @@ import java.util.Collection;
 
 public class UtilisateurImpl extends UnicastRemoteObject implements Utilisateur {
 
-	private int id;
 	private String nom;
 	private String prenom;
-	private boolean isComptable; 
 	private ArrayList <FraisImpl> listeFraisImpl;
 	
 	public UtilisateurImpl()  throws RemoteException {
 		// TODO Auto-geneated constructor stub
 		super();
+		this.nom = "";
+		this.prenom = "";
+		this.listeFraisImpl = new ArrayList <FraisImpl>();
 	}
 
-	public void addFrais(FraisImpl FraisImpl) throws RemoteException {
+	public void addFrais(Frais frais) throws RemoteException {
+		FraisImpl fraisImpl = new FraisImpl(frais.getMontant(), frais.getDescription(), frais.getDate());
 		// TODO Auto-generated method stub
-
-	}
-
-	public FraisImpl getFrais(int id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		this.listeFraisImpl.add(fraisImpl);
 	}
 	
-	public ArrayList<Frais> getAllFrais() throws RemoteException {
+	public FraisImpl getFrais(int index) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return this.listeFraisImpl.get(index);
 	}
+	
 
-	public void deleteFrais(int id) throws RemoteException {
+	public void deleteFrais(int index) throws RemoteException {
 		// TODO Auto-generated method stub
-
-	}
-
-	public boolean isComptable() throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
+		this.listeFraisImpl.remove(index);
 	}
 
 	public float getMontantTotal() throws RemoteException {
 		// TODO Auto-generated method stub
-		return 0;
+		float total = 0;
+		for(FraisImpl fraisImpl : this.listeFraisImpl) {
+			total = total + fraisImpl.getMontant();
+		}
+		return total;
 	}
 
-	@Override
-	public void addFrais(Frais frais) throws RemoteException {
-		// TODO Auto-generated method stub
+	public String getNom()  throws RemoteException{
+		return nom;
+	}
+
+	public void setNom(String nom)  throws RemoteException{
+		this.nom = nom;
+	}
+
+	public String getPrenom()  throws RemoteException{
+		return prenom;
+	}
+
+	public void setPrenom(String prenom)  throws RemoteException{
+		this.prenom = prenom;
+	}
+
+	public ArrayList<FraisImpl> getListeFraisImpl()  throws RemoteException{
+		return listeFraisImpl;
+	}
+
+	public void setListeFraisImpl ( ArrayList<FraisImpl>  listeFraisImpl)  throws RemoteException{
+		this.listeFraisImpl = listeFraisImpl;
+	}
+
+	public String getAffichage() {
+		String message = "Utilisateur  : \n";
+		message = message +  "Prenom  : " + this.prenom + "\n";
+		message = message + "Nom  : " + this.nom + "\n";
+		message = message + "\nFrais : \n";
 		
+		for(FraisImpl fraisImpl : this.listeFraisImpl) {
+			message = message + fraisImpl.getAffichage();
+		}
+		
+		return message;
 	}
-
 }

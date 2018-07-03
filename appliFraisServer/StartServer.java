@@ -9,7 +9,7 @@ import java.rmi.UnknownHostException;
 import java.rmi.registry.LocateRegistry;
 
 
-public class Main {
+public class StartServer {
 
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws java.net.UnknownHostException {
